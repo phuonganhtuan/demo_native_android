@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "851734418508",
+    "project_id": "to-do-list-congvt",
+    "storage_bucket": "to-do-list-congvt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851734418508:android:36595d929ee7f08f4850e9",
+        "android_client_info": {
+          "package_name": "com.example"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851734418508-8ub2hcv1hkffd1fjfhm3qri93gck8bl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmuyCgR2pE1MYt8rS7bqvmL7DVbJu4ZYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851734418508-8ub2hcv1hkffd1fjfhm3qri93gck8bl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
