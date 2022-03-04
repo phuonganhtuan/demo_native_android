@@ -1,6 +1,5 @@
 package com.example.screens.home
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.base.LoadDataState
@@ -31,23 +30,18 @@ class HomeViewModel @Inject constructor(private val repository: ActivityReposito
             try {
                 _loadDataState.value = LoadDataState.LOADING
                 val flows = mutableListOf<Job>()
-                for (i in 0 until 200) {
+                for (i in 0 until 100) {
                     flows.add(launch {
                         resultList.add(repository.getActivity())
-                        Log.i("aaa", "Added")
                     })
                 }
                 flows.joinAll()
+                _activityList.value = resultList
+                _loadDataState.value = LoadDataState.SUCCESS
             } catch (exception: Exception) {
                 _loadDataState.value = LoadDataState.ERROR
-                Log.i("aaa", exception.localizedMessage.toString())
                 return@withContext
             }
-        }
-        withContext(Dispatchers.IO) {
-            Log.i("aaa", "Done")
-            _activityList.value = resultList
-            _loadDataState.value = LoadDataState.SUCCESS
         }
     }
 }

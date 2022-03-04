@@ -4,11 +4,14 @@ import android.app.Activity
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
+import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.viewbinding.ViewBinding
+import com.example.utils.logRenderTime
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -19,6 +22,9 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = inflateViewBinding()
+        (viewBinding.root as? ViewGroup)?.children?.forEach {
+            it.logRenderTime()
+        }
         setContentView(viewBinding.root)
         onActivityReady()
         onActivityReady(savedInstanceState)

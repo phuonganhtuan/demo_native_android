@@ -17,8 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 import com.example.utils.gone
+import com.example.utils.logRenderTime
 import com.example.utils.show
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+@ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
@@ -57,6 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         lifecycleScope.launchWhenStarted {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 activityList.collect {
+                    viewBinding.recyclerActivity.logRenderTime()
                     adapter.submitList(it)
                     Handler(Looper.getMainLooper()).postDelayed({
                         viewBinding.recyclerActivity.scrollToPosition(it.size - 1)

@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.example.utils.logRenderTime
 import com.google.android.material.snackbar.Snackbar
 
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {
@@ -21,6 +23,9 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewBinding = inflateViewBinding(container, savedInstanceState)
+        (viewBinding.root as? ViewGroup)?.children?.forEach {
+            it.logRenderTime()
+        }
         return viewBinding.root
     }
 
